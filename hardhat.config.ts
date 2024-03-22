@@ -59,7 +59,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
 }
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "sepolia",
+  defaultNetwork: "hardhat",
   etherscan: {
     apiKey: {
       scroll: process.env.SCROLLSCAN_API_KEY || "",

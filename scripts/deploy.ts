@@ -10,18 +10,22 @@ async function main() {
   await multiSigWalletFactoryContract.deployed();
 
   console.log(
-    `MultiSigWallet with deployed to ${multiSigWalletFactoryContract.address}`
+    `MultiSigWalletFacotry with deployed to ${multiSigWalletFactoryContract.address}`
   );
 
   let tx = await multiSigWalletFactoryContract.create(owners, 2);
   console.log('tx hash: ', tx.hash);
+
   const receipt = await tx.wait();
 
   if (receipt.status) {
-      console.log('tx success');
+    console.log(
+      `MultiSigWallet with deployed to ${receipt.events?.[0]?.args?.[1]}`
+    );
+    console.log('tx success');
   } else {
-      throw new Error(`failed to init wallet`);
-      // }
+    throw new Error(`failed to init wallet`);
+    // }
   }
 
 }
